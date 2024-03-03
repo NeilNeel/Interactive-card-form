@@ -21,6 +21,9 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./src/css/style.css" />
 
+    <!-- JS -->
+    <script defer src="./src/main.js"></script>
+
     <title>Interactive card details form</title>
   </head>
   <body class="font-space flex justify-center items-center">
@@ -57,35 +60,47 @@
         <!-- FORM -->
         <div class="card--form grid self-center">
           <!-- cardholder name -->
-          <label class="custom-label">CARDHOLDER NAME</label>
-          <input
-            class="input--name"
-            type="text"
-            placeholder="Enter your name"
-          />
+          <div class="mb-[1.8rem] flex flex-col">
+            <label class="custom-label">CARDHOLDER NAME</label>
+            <input
+              class="input--name"
+              type="text"
+              placeholder="Enter your name"
+            />
+            <span class="error error--name"></span>
+          </div>
           <!-- card number -->
-          <label class="custom-label">CARD NUMBER</label>
-          <input
-            type="number"
-            class="input--number"
-            placeholder="1234 5678 9123 0000"
-          />
+          <div class="mb-[1.8rem] flex flex-col">
+            <label class="custom-label">CARD NUMBER</label>
+            <input
+              type="number"
+              class="input--number"
+              placeholder="1234 5678 9123 0000"
+            />
+            <span class="error error--number invisible"></span>
+          </div>
           <!-- container for exp.date and cvc -->
-          <div class="flex flex-row gap-4">
+          <div class="flex flex-row gap-4 mb-[1.8rem]">
             <!-- exp.date -->
             <div class="flex flex-col flex-grow">
               <label class="custom-label">EXP. DATE ( MM/YY )</label>
               <div class="flex flex-row gap-2">
-                <input
-                  class="input--month max-w-20"
-                  type="number"
-                  placeholder="MM"
-                />
-                <input
-                  class="input--year max-w-20"
-                  type="number"
-                  placeholder="YY"
-                />
+                <div class="flex flex-col">
+                  <input
+                    class="input--month max-w-20"
+                    type="number"
+                    placeholder="MM"
+                  />
+                  <span class="error max-w-20"></span>
+                </div>
+                <div class="flex flex-col">
+                  <input
+                    class="input--year max-w-20"
+                    type="number"
+                    placeholder="YY"
+                  />
+                  <span class="error max-w-20"></span>
+                </div>
               </div>
             </div>
             <!-- cvc -->
@@ -96,11 +111,12 @@
                 type="number"
                 placeholder="e.g. 123"
               />
+              <span class="error invisible"></span>
             </div>
           </div>
           <!-- Button -->
           <button
-            class="block bg-Very_dark_violet text-white font-bold p-4 rounded-xl tracking-widest transition-all duration-300"
+            class="btn block bg-Very_dark_violet text-white font-bold p-4 rounded-xl tracking-widest transition-all duration-300"
           >
             CONFIRM
           </button>
