@@ -125,5 +125,7 @@ function emptyInput(inputs) {
 function setError(input, errorMsg) {
   const parent = input.parentElement;
   const errorEl = parent.querySelector(".error");
+  errorEl.classList.add("error--active");
+  input.classList.add("error--active");
   errorEl.textContent = errorMsg;
 }

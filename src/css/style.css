@@ -47,5 +47,13 @@ button:hover {
 }
 
 .error {
+  transition: all 0.3s;
+}
+
+.error.error--active {
   visibility: visible;
+}
+
+input.error--active {
+  border: 1px solid red;
 }
