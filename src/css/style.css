@@ -35,3 +35,7 @@ input {
 .cvc--code {
   top: 49%;
 }
+
+button:hover {
+  box-shadow: 0 0 15px 0 rgb(33, 9, 47);
+}

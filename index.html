@@ -27,9 +27,12 @@
     <main class="container">
       <section class="flex flex-row justify-evenly">
         <div class="card--container max-w-lg w-full gap-7 text-white font-bold">
+          <!-- front card -->
           <div class="card--front p-6 max-w-card h-auto rounded-lg">
             <div class="dots flex flex-row gap-4 items-center mb-12">
+              <!-- full bg-white ciricle -->
               <div class="white--dot bg-white w-10 h-10 rounded-full"></div>
+              <!-- full border white circle -->
               <div
                 class="white--circle bg-transparent w-5 h-5 rounded-full border border-white"
               ></div>
@@ -40,6 +43,8 @@
               <p class="exp--date">00/00</p>
             </div>
           </div>
+
+          <!-- card--back -->
           <div
             class="card--back p-6 max-w-card w-full h-56 rounded-lg relative ml-20 mt-8"
           >
@@ -48,13 +53,57 @@
             </div>
           </div>
         </div>
-        <div class="card--form w-full max-w-card">
+
+        <!-- FORM -->
+        <div class="card--form grid self-center">
           <!-- cardholder name -->
+          <label class="custom-label">CARDHOLDER NAME</label>
           <input
             class="input--name"
             type="text"
             placeholder="Enter your name"
           />
+          <!-- card number -->
+          <label class="custom-label">CARD NUMBER</label>
+          <input
+            type="number"
+            class="input--number"
+            placeholder="1234 5678 9123 0000"
+          />
+          <!-- container for exp.date and cvc -->
+          <div class="flex flex-row gap-4">
+            <!-- exp.date -->
+            <div class="flex flex-col flex-grow">
+              <label class="custom-label">EXP. DATE ( MM/YY )</label>
+              <div class="flex flex-row gap-2">
+                <input
+                  class="input--month max-w-20"
+                  type="number"
+                  placeholder="MM"
+                />
+                <input
+                  class="input--year max-w-20"
+                  type="number"
+                  placeholder="YY"
+                />
+              </div>
+            </div>
+            <!-- cvc -->
+            <div class="flex flex-col">
+              <label class="custom-label">CVC</label>
+              <input
+                class="input--cvc max-w-[10rem]"
+                type="number"
+                placeholder="e.g. 123"
+              />
+            </div>
+          </div>
+          <!-- Button -->
+          <button
+            class="block bg-Very_dark_violet text-white font-bold p-4 rounded-xl tracking-widest transition-all duration-300"
+          >
+            CONFIRM
+          </button>
         </div>
       </section>
     </main>
