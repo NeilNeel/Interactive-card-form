@@ -3,8 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- displays site properly based on user's device -->
-
     <link
       rel="icon"
       type="image/png"
@@ -12,12 +10,53 @@
       href="./images/favicon-32x32.png"
     />
 
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- CSS -->
     <link rel="stylesheet" href="./src/css/style.css" />
 
     <title>Interactive card details form</title>
   </head>
-  <body>
-    <h1 class="bg-red-800">Fuck me</h1>
+  <body class="font-space flex justify-center items-center">
+    <main class="container">
+      <section class="flex flex-row justify-evenly">
+        <div class="card--container max-w-lg w-full gap-7 text-white font-bold">
+          <div class="card--front p-6 max-w-card h-auto rounded-lg">
+            <div class="dots flex flex-row gap-4 items-center mb-12">
+              <div class="white--dot bg-white w-10 h-10 rounded-full"></div>
+              <div
+                class="white--circle bg-transparent w-5 h-5 rounded-full border border-white"
+              ></div>
+            </div>
+            <p class="card--number text-2xl mb-4">0000 0000 0000 0000</p>
+            <div class="flex justify-between text-sm">
+              <p class="card--name">Neel Barvaliya</p>
+              <p class="exp--date">00/00</p>
+            </div>
+          </div>
+          <div
+            class="card--back p-6 max-w-card w-full h-56 rounded-lg relative ml-20 mt-8"
+          >
+            <div class="cvc--code inline-block absolute right-14 text-xl">
+              000
+            </div>
+          </div>
+        </div>
+        <div class="card--form w-full max-w-card">
+          <!-- cardholder name -->
+          <input
+            class="input--name"
+            type="text"
+            placeholder="Enter your name"
+          />
+        </div>
+      </section>
+    </main>
   </body>
 </html>

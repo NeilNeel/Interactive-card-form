@@ -1,3 +1,37 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background-image: url("../../images/bg-main-desktop.png");
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  min-height: 100vh;
+}
+
+input {
+  padding: 0.6rem;
+  max-width: 23rem;
+  border-radius: 5px;
+  border: 1px solid hsl(270, 3%, 87%);
+  width: 100%;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  color: hsl(279, 6%, 55%);
+}
+
+.card--front {
+  background-image: url("../../images/bg-card-front.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.card--back {
+  background-image: url("../../images/bg-card-back.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cvc--code {
+  top: 49%;
+}

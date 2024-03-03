@@ -2,7 +2,14 @@
 module.exports = {
   content: ["*"],
   theme: {
-    extend: {},
+    extend: {
+      maxWidth: {
+        card: "28rem",
+      },
+    },
+    fontFamily: {
+      space: ["Space Grotesk", "sans-serif"],
+    },
   },
   plugins: [],
 };
