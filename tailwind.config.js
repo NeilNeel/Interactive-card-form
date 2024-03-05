@@ -24,7 +24,7 @@ module.exports = {
           "@apply block mb-2 text-[0.95rem] tracking-[2.5px]": true,
         },
         ".error": {
-          "@apply invisible text-xs text-red-600 mt-[0.2rem]": true,
+          "@apply text-xs text-red-600 mt-[0.2rem]": true,
         },
       });
     },

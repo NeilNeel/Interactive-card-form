@@ -46,12 +46,14 @@ button:hover {
   box-shadow: 0 0 15px 0 rgb(33, 9, 47);
 }
 
-.error {
+.error,
+.error span {
+  display: none;
   transition: all 0.3s;
 }
 
 .error.error--active {
-  visibility: visible;
+  display: flex;
 }
 
 input.error--active {

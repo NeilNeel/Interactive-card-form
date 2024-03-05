@@ -5,6 +5,8 @@ const cardNumberEl = document.querySelector(".card--number");
 const cardNameEl = document.querySelector(".card--name");
 const expDateEl = document.querySelector(".exp--date");
 const cvcCodeEl = document.querySelector(".cvc--code");
+const cardMonthEl = document.querySelector(".card--month");
+const cardYearEl = document.querySelector(".card--year");
 
 // input
 const inputNameEl = document.querySelector(".input--name");
@@ -31,6 +33,10 @@ let numsPressed = [];
 // error message
 const errorMessage = {
   empty: "*Please enter this field",
+  containsNum: "*Please enter valid Name (numbers not allowed)",
+  cardNumber: "*Enter valid card number",
+  date: "*Please enter a valid date",
+  cvc: "*Please enter a valid CVC number",
 };
 
 // ********************************
@@ -38,74 +44,62 @@ const errorMessage = {
 // ********************************
 btnEl.addEventListener("click", function (e) {
   // checking for empty fields
-  if (!emptyInput(inputAllEl)) {
-    console.log("fuck");
+  if (emptyInput(inputAllEl)) {
+    if (!validInput(inputAllEl)) {
+      //
+    }
   }
 });
 
 // ********************************
 // ENTRING CARD NAME
 // ********************************
-inputNameEl.addEventListener("keydown", function (e) {
-  //   e.preventDefault();
-  const keyPressed = e.key;
-
-  //   when user deletes a letter
-  if (keyPressed === "Backspace") {
-    formatStr(keysPressed.pop(), keysPressed, cardNameEl);
-  }
-  if (correctKeyStr(keyPressed)) {
-    formatStr(keysPressed.push(keyPressed), keysPressed, cardNameEl);
-  } else {
-    console.log("fuck");
-  }
+inputNameEl.addEventListener("input", function (e) {
+  const value = inputNameEl.value.trim();
+  cardNameEl.textContent = value;
 });
 
 // ********************************
 // ENTRING CARD Number
 // ********************************
-inputNumberEl.addEventListener("keydown", function (e) {
-  const keyPressed = e.key;
-  if (keyPressed === "Backspace") {
-    formatStr(numsPressed.pop(), numsPressed, cardNumberEl);
-  }
-  if (correctKeyNum(keyPressed)) {
-    formatStr(numsPressed.push(keyPressed), numsPressed, cardNumberEl);
-  }
+inputNumberEl.addEventListener("input", function (e) {
+  const value = inputNumberEl.value;
+  let arr = value.split("");
+  arr.forEach(function (e, index) {
+    if (!numRegex.test(e)) {
+      arr = arr.splice(index, 1);
+      setError(inputNumberEl, errorMessage.cardNumber);
+    } else removeError(inputNumberEl);
+  });
+  cardNumberEl.textContent = arr.join("");
 });
 
 // ********************************
-// formatting the entered key
+// ENTRING month
 // ********************************
-function formatStr(type, arr, el) {
-  type;
-  el.textContent = arr.join("");
-}
+inputMonthEl.addEventListener("input", function (e) {
+  const value = inputMonthEl.value.trim();
+  cardMonthEl.textContent = value;
+});
 
 // ********************************
-// Check if the pressed key is a letter
+// ENTRING year
 // ********************************
-function correctKeyStr(keyPressed) {
-  let isLetter = true;
-  if (!letterRegex.test(keyPressed) || keyPressed.length > 1) {
-    isLetter = false;
-  }
-  return isLetter;
-}
+inputYearEl.addEventListener("input", function (e) {
+  const value = inputYearEl.value.trim();
+  cardYearEl.textContent = value;
+});
 
 // ********************************
-// Check if the pressed key is a number
+// ENTRING CVC
 // ********************************
-function correctKeyNum(keyPressed) {
-  let isNum = true;
-  if (!numRegex.test(keyPressed) || keyPressed.length > 1) {
-    isNum = false;
-  }
-  return isNum;
-}
+inputCvcEl.addEventListener("input", function (e) {
+  const value = inputCvcEl.value.trim();
+  cvcCodeEl.textContent = value;
+});
 
 // ********************************
-// funnction if empty input
+// funnction for empty input
 // ********************************
 function emptyInput(inputs) {
   let hasValue = true;
@@ -113,10 +107,65 @@ function emptyInput(inputs) {
     const value = e.value.trim();
     if (value === "" || value === null || Number(value) === 0) {
       hasValue = false;
+      // if empty
       setError(e, errorMessage.empty);
-    }
+    } else removeError(e);
   });
   return hasValue;
+}
+
+// ********************************
+// checking if the  given input's is correct
+// ********************************
+function validInput(inputs) {
+  let isValid = true;
+  [...inputs].forEach(function (e) {
+    const value = e.value;
+    // for name
+    if (e.classList.contains("input--name")) {
+      const check = value.split("").some((element) => !isNaN(element));
+      if (check) {
+        setError(e, errorMessage.containsNum);
+        isValid = false;
+      } else removeError(e);
+    }
+
+    // for card number
+    if (e.classList.contains("input--number")) {
+      let arr = value.trim().split("");
+      arr = arr.filter((e) => e !== " ").join("");
+
+      if (Number(arr.length) !== 16) {
+        setError(e, errorMessage.cardNumber);
+        isValid = false;
+      }
+    }
+
+    // for month
+    if (e.classList.contains("input--month")) {
+      if (isNaN(value) || Number(value) < 0 || Number(value) > 12) {
+        setError(e, errorMessage.date);
+        isValid = false;
+      }
+    }
+
+    // for year
+    if (e.classList.contains("input--year")) {
+      if (isNaN(value) || Number(value) < 0) {
+        setError(e, errorMessage.date);
+        isValid = false;
+      }
+    }
+
+    // for cvc4
+    if (e.classList.contains("input--cvc")) {
+      if (isNaN(value) || Number(value) < 0 || Number(value) !== 3) {
+        setError(e, errorMessage.cvc);
+        isValid = false;
+      }
+    }
+  });
+  return isValid;
 }
 
 // ********************************
@@ -128,4 +177,15 @@ function setError(input, errorMsg) {
   errorEl.classList.add("error--active");
   input.classList.add("error--active");
   errorEl.textContent = errorMsg;
+}
+
+// ********************************
+// removing error correctly
+// ********************************
+function removeError(input) {
+  const parent = input.parentElement;
+  const errorEl = parent.querySelector(".error");
+  errorEl.classList.remove("error--active");
+  input.classList.remove("error--active");
+  errorEl.textContent = "";
 }
