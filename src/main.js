@@ -1,5 +1,9 @@
 "use strict";
 
+//containers
+const cardFormEl = document.querySelector(".card--form");
+const cardCompleteEl = document.querySelector(".card--complete");
+
 // card--display
 const cardNumberEl = document.querySelector(".card--number");
 const cardNameEl = document.querySelector(".card--name");
@@ -26,10 +30,6 @@ const errorAllEl = document.querySelectorAll(".error");
 const letterRegex = new RegExp(/[a-zA-Z ]/);
 const numRegex = new RegExp(/[0-9 ]/);
 
-// array for card holder name,number
-let keysPressed = [];
-let numsPressed = [];
-
 // error message
 const errorMessage = {
   empty: "*Please enter this field",
@@ -45,8 +45,10 @@ const errorMessage = {
 btnEl.addEventListener("click", function (e) {
   // checking for empty fields
   if (emptyInput(inputAllEl)) {
-    if (!validInput(inputAllEl)) {
-      //
+    if (validInput(inputAllEl)) {
+      console.log("ohh fuck yes yes yes");
+      cardFormEl.classList.add("card--hidden");
+      cardCompleteEl.classList.remove("card--hidden");
     }
   }
 });
@@ -159,7 +161,7 @@ function validInput(inputs) {
 
     // for cvc4
     if (e.classList.contains("input--cvc")) {
-      if (isNaN(value) || Number(value) < 0 || Number(value) !== 3) {
+      if (isNaN(value) || Number(value) < 0 || value.length !== 3) {
         setError(e, errorMessage.cvc);
         isValid = false;
       }

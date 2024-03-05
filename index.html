@@ -44,9 +44,9 @@
             <div class="flex justify-between text-sm">
               <p class="card--name">Neel Barvaliya</p>
               <p class="exp--date">
-                <span class="card--month"></span>/<span
-                  class="card--year"
-                ></span>
+                <span class="card--month">12</span>/<span class="card--year"
+                  >24</span
+                >
               </p>
             </div>
           </div>
@@ -62,7 +62,7 @@
         </div>
 
         <!-- FORM -->
-        <div class="card--form grid self-center">
+        <div class="card--form grid self-center max-w-[23rem]">
           <!-- cardholder name -->
           <div class="mb-[1.8rem] flex flex-col">
             <label class="custom-label">CARDHOLDER NAME</label>
@@ -127,6 +127,49 @@
           >
             CONFIRM
           </button>
+        </div>
+
+        <!-- after the form is filled correctly -->
+        <div class="card--complete card--hidden grid self-center min-w-[23rem]">
+          <div class="flex flex-col items-center">
+            <figure class="mb-8">
+              <svg
+                width="80"
+                height="80"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle cx="40" cy="40" r="40" fill="url(#a)" />
+                <path
+                  d="M28 39.92 36.08 48l16-16"
+                  stroke="#fff"
+                  stroke-width="3"
+                />
+                <defs>
+                  <linearGradient
+                    id="a"
+                    x1="-23.014"
+                    y1="11.507"
+                    x2="0"
+                    y2="91.507"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stop-color="#6348FE" />
+                    <stop offset="1" stop-color="#610595" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </figure>
+            <h2 class="mb-2 text-2xl tracking-widest font-semibold">
+              THANK YOU!
+            </h2>
+            <p class="mb-8 font-">We've added your card details</p>
+            <button
+              class="btn block bg-Very_dark_violet text-white font-bold p-4 rounded-xl tracking-widest transition-all duration-300 w-full"
+            >
+              CONTINUE
+            </button>
+          </div>
         </div>
       </section>
     </main>
