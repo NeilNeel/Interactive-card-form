@@ -29,7 +29,7 @@
   }
 }
 
-@media (min-width: 320px) and (max-width: 768px) {
+/* @media (min-width: 320px) and (max-width: 768px) {
   body {
     background-position: top;
     background-size: 100% 40%;
@@ -67,11 +67,15 @@
     right: 16%;
     z-index: 1;
   }
-}
+} */
 
-@media (max-width: 320px) {
+@media (min-width: 320px) and (max-width: 768px) {
   body {
     background-size: 100% 30%;
+  }
+
+  .section {
+    flex-direction: column;
   }
 
   .card--front,
