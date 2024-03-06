@@ -137,3 +137,11 @@
     letter-spacing: 0;
   }
 }
+
+/* card--complete */
+@media (max-width: 320px) {
+  .card--complete {
+    padding: 1.5rem 0;
+    width: auto;
+  }
+}
