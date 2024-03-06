@@ -20,6 +20,15 @@ input {
   transition: all 0.3s;
 }
 
+.input--name:focus,
+.input--number:focus,
+.input--month:focus,
+.input--year:focus,
+.input--cvc:focus {
+  border-color: hsl(249, 99%, 64%);
+  outline: none;
+}
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
