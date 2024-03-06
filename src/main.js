@@ -125,7 +125,9 @@ function validInput(inputs) {
     const value = e.value;
     // for name
     if (e.classList.contains("input--name")) {
-      const check = value.split("").some((element) => !isNaN(element));
+      const check = value
+        .split("")
+        .some((element) => /\S/.test(element) && !isNaN(element));
       if (check) {
         setError(e, errorMessage.containsNum);
         isValid = false;
